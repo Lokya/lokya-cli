@@ -1,6 +1,8 @@
 const fs = require('fs');
 const readline = require('readline');
 const which = require('which');
+const chalk = require('chalk');
+
 
 // 检测文件夹是否为空
 function emptyDir(path, fn) {
