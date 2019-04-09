@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-
 // 读取package.json 数据
 const pkg = require('../package.json');
 // 读取开始界面
 const start = require('../packages/commands/start')
+
+const init = require('../packages/commands/init')
 
 // 版本查看和cli start
 program
