@@ -5,7 +5,7 @@ const spawn = require('cross-spawn');
 const chalk = require('chalk');
 const ProgressBar = require('progress');
 
-const { emptyDir, finPackager, findGit } = require('../utils/utils');
+const { emptyDir, finPackager, findGit, writeFile } = require('../utils/utils');
 
 const { CORE_TYPE, CORE_NAME, CORE_IGNORE_LIST } = require('../utils/constants');
 
@@ -13,16 +13,16 @@ const packagePath = __dirname.split(path.sep).slice(0, -2).join(path.sep);
 
 const coreConfig = {
   name: CORE_NAME.webpack,
-  path: path.resolve(packagePath, CORE_NAME.webpack),
+  path: path.resolve(packagePath),
   type: CORE_TYPE.default,
 }
 
 
 // 初始化
-function init (dirnamr, cmd) {
-	emptyDir(dirnamr, function(empty){
+function init (dirname, cmd) {
+	emptyDir(dirname, function(empty){
 		if(empty) {
-			create(dirnamr, cmd)
+			create(dirname, cmd)
 		} else {
 			confirm(chalk.red('Directory is not empty, continue? [y/N] '), function (ok) {
         if (ok) {

@@ -33,9 +33,15 @@ function findGit() {
 	throw new Error('please install git!');
 }
 
+function writeFile(destPath, content, mode = 0644) {
+  fs.writeFileSync(destPath, content, { mode });
+  console.log(chalk.green(`create: ${destPath}`));
+}
+
 
 module.exports = {
 	emptyDir,
 	finPackager,
 	findGit,
+	writeFile,
 };
