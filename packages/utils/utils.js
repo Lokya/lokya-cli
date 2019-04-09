@@ -38,10 +38,23 @@ function writeFile(destPath, content, mode = 0644) {
   console.log(chalk.green(`create: ${destPath}`));
 }
 
+function confirm (msg, callback) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  rl.question(msg, function (input) {
+    rl.close();
+    callback(/^y|yes|ok|true$/i.test(input));
+  });
+}
+
 
 module.exports = {
 	emptyDir,
 	finPackager,
 	findGit,
 	writeFile,
+	confirm,
 };

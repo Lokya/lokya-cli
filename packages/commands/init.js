@@ -5,7 +5,7 @@ const spawn = require('cross-spawn');
 const chalk = require('chalk');
 const ProgressBar = require('progress');
 
-const { emptyDir, finPackager, findGit, writeFile } = require('../utils/utils');
+const { emptyDir, finPackager, findGit, writeFile, confirm } = require('../utils/utils');
 
 const { CORE_TYPE, CORE_NAME, CORE_IGNORE_LIST } = require('../utils/constants');
 
