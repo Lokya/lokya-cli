@@ -13,7 +13,7 @@ const CORE_TYPE = {
 }
 
 const CORE_NAME = {
-	webpack: webpack
+	webpack: "webpack"
 }
 
 module.exports = {
