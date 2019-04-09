@@ -1,4 +1,5 @@
 const fs = require('fs');
+const readline = require('readline');
 const which = require('which');
 
 // 检测文件夹是否为空
