@@ -36,11 +36,13 @@ function findGit() {
 	throw new Error('please install git!');
 }
 
+// 写文件
 function writeFile(destPath, content, mode = 0644) {
   fs.writeFileSync(destPath, content, { mode });
   console.log(chalk.green(`create: ${destPath}`));
 }
 
+// 确认
 function confirm (msg, callback) {
   const rl = readline.createInterface({
     input: process.stdin,

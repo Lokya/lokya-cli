@@ -7,8 +7,7 @@
     "lk": "./bin/index.js"
   },
   "scripts": {
-    "test": "test",
-    "postinstall": "git clone https://github.com/Lokya/flash-card.git"
+    "postinstall": "git clone https://github.com/Lokya/flash-card.git webpack"
   },
   "keywords": [
     "webpack"

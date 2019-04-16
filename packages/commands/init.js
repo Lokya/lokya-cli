@@ -13,7 +13,7 @@ const packagePath = __dirname.split(path.sep).slice(0, -2).join(path.sep);
 
 const coreConfig = {
   name: CORE_NAME.webpack,
-  path: path.resolve(packagePath),
+  path: path.resolve(packagePath, CORE_NAME.webpack),
   type: CORE_TYPE.default,
 }
 
