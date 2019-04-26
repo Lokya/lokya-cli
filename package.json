@@ -1,13 +1,13 @@
 {
   "name": "lokya-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "lokya-cli",
   "main": "index.js",
   "bin": {
     "lk": "./bin/index.js"
   },
   "scripts": {
-    "postinstall": "git clone https://github.com/Lokya/flash-card.git webpack"
+    "postinstall": "git clone -b react https://github.com/Lokya/c-machine.git code"
   },
   "keywords": [
     "webpack"

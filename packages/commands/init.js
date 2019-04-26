@@ -12,8 +12,8 @@ const { CORE_TYPE, CORE_NAME, CORE_IGNORE_LIST } = require('../utils/constants')
 const packagePath = __dirname.split(path.sep).slice(0, -2).join(path.sep);
 
 const coreConfig = {
-  name: CORE_NAME.webpack,
-  path: path.resolve(packagePath, CORE_NAME.webpack),
+  name: CORE_NAME.code,
+  path: path.resolve(packagePath, CORE_NAME.code),
   type: CORE_TYPE.default,
 }
 
