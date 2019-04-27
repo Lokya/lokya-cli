@@ -20,6 +20,7 @@ const coreConfig = {
 
 // 初始化
 function init (dirname, cmd) {
+  spawn('lk', ['start']);
 	emptyDir(dirname, function(empty){
 		if(empty) {
 			create(dirname, cmd)
@@ -50,6 +51,7 @@ async function create(dirname, cmd) {
 	
 	if (install && git) {
     spawn(packager, ['install', '--cwd', path.resolve(destPath)], { stdio: 'inherit' });
+    spawn(packager, ['build', path.resolve(destPath)], { stdio: 'inherit' });
   }
 }
 

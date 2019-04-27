@@ -9,7 +9,7 @@ const CORE_IGNORE_LIST = [
   '*.swp'
 ]
 const CORE_TYPE = {
-	default: 'master',
+	default: 'react',
 }
 
 const CORE_NAME = {
