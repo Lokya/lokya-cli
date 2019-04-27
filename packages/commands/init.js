@@ -4,6 +4,7 @@ const fse = require('fs-extra');
 const spawn = require('cross-spawn');
 const chalk = require('chalk');
 const ProgressBar = require('progress');
+const start = require('./start');
 
 const { emptyDir, finPackager, findGit, writeFile, confirm } = require('../utils/utils');
 
@@ -20,7 +21,7 @@ const coreConfig = {
 
 // 初始化
 function init (dirname, cmd) {
-  spawn('lk', ['start']);
+  start();
 	emptyDir(dirname, function(empty){
 		if(empty) {
 			create(dirname, cmd)
@@ -28,7 +29,7 @@ function init (dirname, cmd) {
 			confirm(chalk.red('Directory is not empty, continue? [y/N] '), function (ok) {
         if (ok) {
           process.stdin.destroy();
-          create(dirname, cmd);
+          create(dirname, cmd)
         } else {
           console.error('aborting');
           exit(1);
@@ -50,9 +51,20 @@ async function create(dirname, cmd) {
 	await copyCore(destPath);
 	
 	if (install && git) {
-    spawn(packager, ['install', '--cwd', path.resolve(destPath)], { stdio: 'inherit' });
-    spawn(packager, ['build', path.resolve(destPath)], { stdio: 'inherit' });
+    const createSpawn = spawn(packager, ['install', '--cwd', path.resolve(destPath)], { stdio: 'inherit' });
+    createSpawn.on('exit', () => {
+      build(destPath, packager);
+    });
   }
+}
+
+// npm build || yarn build
+async function build (destPath, packager) {
+  const cdDir = spawn(`${packager} build`, {
+    shell: true,
+    cwd: path.resolve(destPath),
+  })
+  cdDir.on('error', err => reject(err));
 }
 
 // 更新代码
